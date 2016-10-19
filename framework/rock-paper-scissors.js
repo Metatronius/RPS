@@ -1,20 +1,28 @@
 // JavaScript code goes on this page
-var userChoice = prompt("Do you choose rock, paper or scissors?");
-
-
+var userChoice = prompt("Do you choose rock, paper, scissors, spock, or rock?");
+var win;
 var computerChoice = Math.random();
-if (computerChoice <= 0.33)
+if (computerChoice <= 0.2)
 {
   computerChoice = "rock";
 }
-else if (computerChoice <= 0.66)
+else if (computerChoice <= 0.4)
 {
   computerChoice = "paper";
+}
+else if (computerChoice <= 0.6)
+{
+  computerChoice = "lizard";
+}
+else if (computerChoice <= 0.8)
+{
+  computerChoice = "spock";
 }
 else
 {
   computerChoice = "scissors";
 }
+console.log(computerChoice);
 var compare = function(userChoice, computerChoice)
 {
 if (userChoice === computerChoice)
@@ -23,35 +31,30 @@ if (userChoice === computerChoice)
 }
   else if (userChoice === "rock")
   {
-    if (computerChoice === "scissors")
-    {
-      window.alert("You Win! Rock beats Scissors.");
-    }
-    else
-    {
-      window.alert("You Lose! Paper beats Rock.");
-    }
+    win = (computerChoice === "scissors" || computerChoice === "lizard");
   }
   else if (userChoice === "paper")
   {
-    if (computerChoice === "rock")
-    {
-      window.alert("You Win! Paper beats Rock.");
-    }
-    else
-    {
-      window.alert("You Lose! Scissors beats Paper.");
-    }
+    win = (computerChoice === "rock" || computerChoice === "spock");
   }
   else if (userChoice === "scissors")
   {
-    if (computerChoice === "paper")
-    {
-      window.alert("You Win! Scissors beats Paper.");
-    }
-    else
-    {
-      window.alert("You Lose! Rock beats Scissors.");
-    }
+    win = (computerChoice === "paper" || computerChoice === "lizard");
+  }
+  else if (userChoice === "spock")
+  {
+    win = (computerChoice === "rock" || computerChoice === "scissors");
+  }
+  else if (userChoice === "lizard")
+  {
+    win = (computerChoice === "spock" || computerChoice === "paper");
+  }
+  if(win)
+  {
+    window.alert("You Win! "+userChoice+" beats " + computerChoice +".");
+  }
+  else
+  {
+    window.alert("You Lose! "+computerChoice+" beats "+userChoice+".");
   }
 };
